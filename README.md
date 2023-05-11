@@ -1,14 +1,14 @@
-# Posterior Inference on Infinite Width Limits of Neural Networks under Weights with Unbounded Variance
+# Posterior Inference on Infinitely Wide Bayesian Neural Networks under Weights with Unbounded Variance
 
-**"Posterior Inference on Infinite Width Limits of Neural Networks under Weights with Unbounded Variance" Authors: Jorge Loría, Anindya Bhadra.** 
+**"Posterior Inference on Infinitely Wide Bayesian Neural Networks under Weights with Unbounded Variance" Authors: Jorge Loría, Anindya Bhadra.** 
 Preprint: []()
 
 The functions to replicate the simulations are in the files: 
-- 
+- `run_simulations.R`
 
 These are used several times, using bash calls, to perform the simulations shown in the preprint.
 
-The main functions to run the prediction are in: `qmat_modif.R`. Specifically, the main function to use is: `sample_2d`. This function takes 3 required parameters:
+The main functions to run the prediction are in: `qmat_functions.R`. Specifically, the main function to use is: `sample_2d`. This function takes 3 required parameters:
 
 - `x`: the observed locations matrix,
 - `y`: the observed responses,
