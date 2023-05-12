@@ -1,9 +1,4 @@
 
-
-## five is doing good, but nnet is failing, 
-# might need a new nnet method
-## seven is also doing good, similar issue with nnet
-
 load('samps_valid_tubes.RData')
 plot(apply(samps$y_pred,2,median),valid_set[,3])
 abline(0,1)
@@ -32,29 +27,4 @@ mean(abs(pred_bb - valid_set[,c(3)]))
 mean(abs(pred_ml - valid_set[,c(3)]))
 mean(abs(preds_gp$ZZ.med - valid_set[,c(3)]))
 mean(abs(apply(samps$y_pred,2,median) - valid_set[,c(3)]))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

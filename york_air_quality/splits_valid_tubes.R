@@ -22,5 +22,5 @@ splits_0 <- sample_2d(x=train_dat[,c(1,2)],
                       y=train_dat[,3],
                       xstar = valid_set[,c(1,2)],
                       return_qs_only=T)
-name0 <- paste0('splits_valid_tubes_',month,'.RData')
+name0 <- paste0('splits_valid_tubes.RData')
 save.image(file = name0)

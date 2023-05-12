@@ -1,9 +1,13 @@
-name0 <- paste0('splits_valid_tubes_7.RData')
+
+name0 <- paste0('splits_valid_tubes.RData')
 load(file = name0)
 # optimal hyperparameters:
 alpha0 <- 1.9
 nu0 <- 1
-samps <- sample_2d(x=train_dat[,c(1,2)],
+# locations, standardized are the first two columns of 
+# train dat and valid set, observations (standardized)
+# are in the third column of the respective objects
+samps <- sample_2d(x=train_dat[,c(1,2)], 
                    y=train_dat[,3],
                    xstar = valid_set[,c(1,2)],
                    alpha0 = alpha0,
@@ -26,5 +30,5 @@ train_mae <- mean(
   )
 )
 
-name0 <- paste0('samps_valid_tubes_7.RData')
+name0 <- paste0('samps_valid_tubes.RData')
 save.image(file = name0)
