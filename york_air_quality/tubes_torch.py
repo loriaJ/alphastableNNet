@@ -1,5 +1,5 @@
+# based on code from https://github.com/Harry24k/bayesian-neural-network-pytorch/blob/master/demos/Bayesian%20Neural%20Network%20Regression.ipynb
 import numpy as np
-
 
 import torch
 import torch.nn as nn
