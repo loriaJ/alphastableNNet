@@ -19,8 +19,8 @@ The main functions to run the prediction are in: `qmat_functions.R`. Specificall
 It can also receive the optionals parameters: 
 - `sigma2`: the assumed variance, predefined to be 1,
 - `alpha0`: the index parameter of the $\alpha$-stables,
-- `known_sigma`: if the assumed variance is given by the `sigma2` parameter,
-- `nu`: scale of the $\alpha$-stable variables,
+- `known_sigma`: `TRUE` if the assumed variance is given by the `sigma2` parameter, or `FALSE` if it is not known, predefined to be `TRUE`,
+- `nu`: scale of the $\alpha$-stable variables, predefined to be 1,
 - `n_sim`: the number of simulations, predefined to be 1000,
 - `return_qs_only`: boolean to identify if the function should compute the partitions and their probabilities only or if it should perform the complete inference process, false by default,
 - `q_list_lambda`: by default an empty list, used to separate the procedure in two parts: obtaining the partitions and their respective probabilities, and the Markov chain Monte Carlo process which depends on the empty list.
