@@ -9,10 +9,11 @@ import torchbnn as bnn
 import matplotlib.pyplot as plt
 import pandas as pd
 
-dir0 = 'C:/Users/cuchi/OneDrive - purdue.edu/Research/alpha_stable_neural_nets/np_results/'
-name0 = '5_1.csv'
+# needs full directory of the file
+dir0 = './pytorch_results/'
+name0 = '1D_example.csv'
 input_names = 'input_data_'+ name0
-output_names = 'prediction_' + name0
+output_names = 'pytorch_result_' + name0
 y0 = pd.read_csv(dir0 + input_names)
 
 x_grid7 = np.array(y0[['V1']].copy())
