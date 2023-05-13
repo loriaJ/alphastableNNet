@@ -7,6 +7,7 @@ Preprint: []()
 To replicate the simulations use the files: 
 - `example_1D.R`, and
 - `example_2D.R`.
+
 These files require the R packages: `mlegp`, `tgp`, and `tidyverse` . Using, for example, `install.packages('mlegp')` makes the package `mlegp` available in the local computer.
 
 The main functions to run the predictions are in: `qmat_functions.R` file. Specifically, the main function used is: `sample_2d`. This function takes 3 required parameters:
