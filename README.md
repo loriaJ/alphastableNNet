@@ -5,8 +5,8 @@
 Preprint: []()
 
 To replicate the simulations use the files: 
-- `example_1D.R`, and
-- `example_2D.R`.
+- `example_1d.R`, and
+- `example_2d.R`.
 
 These files require the R packages: `mlegp`, `tgp`, and `tidyverse` . Using, for example, `install.packages('mlegp')` makes the package `mlegp` available in the local computer.
 
@@ -25,6 +25,6 @@ It can also receive the optional parameters:
 - `return_qs_only`: boolean to identify if the function should compute the partitions and their probabilities only or if it should perform the complete inference process, false by default,
 - `q_list_lambda`: by default an empty list, used to separate the procedure in two parts: obtaining the partitions and their respective probabilities, and the Markov chain Monte Carlo process which depends on the empty list.
 
-We include the main examples used in the paper in the files `example_1D.R` and `example_2D.R` for one and two dimensions. The results using the air quality data from York are in the folder `york_air_quality`. There are three scripts to run the python code: `pytorch_1d.py`, `pytorch_2d.py`, and `tubes_torch.py`; these need the locations on line 13, as a directory location (e.g. `/usr/location/alphastableNNet/`), but their output is already in the repository. To run the python code the libraries needed are: numpy, torch, torch.nn, torch.optim, torchbnn, matplotlib, and pandas.
+We include the main examples used in the paper in the files `example_1d.R` and `example_2d.R` for one and two dimensions. The results using the air quality data from York are in the folder `york_air_quality`. There are three scripts to run the python code: `pytorch_1d.py`, `pytorch_2d.py`, and `tubes_torch.py`; these need the locations on line 13, as a directory location (e.g. `/usr/location/alphastableNNet/`), but their output is already in the repository. To run the python code the libraries needed are: numpy, torch, torch.nn, torch.optim, torchbnn, matplotlib, and pandas.
 
 To obtain the Table 1 of the paper, you can simply run the script `./york_air_quality/compare_validation_results.R`. To obtain the `.RData` file used for that script, run the `./york_air_quality/samps_valid_tubes.R` , which uses output (i.e., $q_\ell$ and $\Lambda$) from the file `./york_air_quality/splits_valid_tubes.R` . The data used comes from the York air quality data from: [https://data.yorkopendata.org/dataset/diffusion-tubes-locations](https://data.yorkopendata.org/dataset/diffusion-tubes-locations) .
