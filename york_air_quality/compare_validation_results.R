@@ -1,15 +1,23 @@
 rm(list = ls())
+if(!require(mlegp)){
+  install.packages('mlegp')
+}
+if(!require(tgp)){
+  install.packages('tgp')
+}
+if(!require(tidyverse)){
+  install.packages('tidyverse')
+}
+
 load('samps_valid_tubes.RData')
-plot(apply(samps$y_pred,2,median),valid_set[,3])
-abline(0,1)
-library(tgp)
+
 preds_gp <- bgp(X = train_dat[,c(1,2)],
                      Z = train_dat[,3],
                      XX = valid_set[,c(1,2)],
                      corr='matern',
                      m0r1 = F,BTE = c(10000,20000,1),
                      zcov = T)
-library(mlegp)
+
 ml <- mlegp(X = train_dat[,c(1,2)],
                    Z = train_dat[,3],
                    nugget = 1,

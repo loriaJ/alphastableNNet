@@ -1,5 +1,18 @@
 rm(list = ls())
 # example in 2 D
+if(!require(mvtnorm)){
+  install.packages('mvtnorm')
+}
+if(!require(mlegp)){
+  install.packages('mlegp')
+}
+if(!require(tgp)){
+  install.packages('tgp')
+}
+if(!require(tidyverse)){
+  install.packages('tidyverse')
+}
+
 source('./main_functions/bidimensional_sorting.R')
 source('./main_functions/compute_qpis.R')
 source('./main_functions/qmat_functions.R')
@@ -33,7 +46,6 @@ y0 <- f(x)
 # name2 <- paste0('./pytorch_results/pred_input_2D_example.csv')
 # write.csv(x_pred,file = name2,row.names = F)
 
-library(mvtnorm)
 time_stab1 <- system.time(
   {
     samp1 <- sample_2d(x=x,y=y0,
@@ -49,13 +61,12 @@ preds_stab <- apply(samp1$y_pred[1001:3000,],median,MARGIN = 2)
 # predictions at seen locations:
 # no_preds_stab <- apply(samp1$y_no_pred[1001:3000,],median,MARGIN = 2)
 
-require(tgp)
 time_bayes_gp <- system.time({
   preds_gp <- bgp(X = x,Z = y0,XX = x_pred,
                        corr='matern',
                        m0r1 = F,BTE = c(10000,20000,1),zcov = T)}
 )
-require(mlegp)
+
 time_mle_gp <- system.time({
   ml <- mlegp(X = x,Z = y0,nugget = 1,
                      nugget.known = F)}
@@ -81,7 +92,7 @@ for(i in 1:100){
     mean(abs(preds_stab - y_new)))
 }
 
-library(tidyverse)
+
 df_errors <- as.data.frame(errors) %>% 
   rename(Matern = V1,
          mleGP = V2,

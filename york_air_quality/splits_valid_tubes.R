@@ -1,4 +1,8 @@
 rm(list=ls())
+if(!require(mvtnorm)){
+  install.packages('mvtnorm')
+}
+
 # york tubes
 source('./main_functions/qmat_functions.R')
 source('./main_functions/compute_qpis.R')
@@ -17,7 +21,7 @@ train_dat <- scale(as.matrix(test_train))
 valid_set <- scale(as.matrix(valid_set),
                   center = attr(train_dat,'scaled:center'),
                   scale =  attr(train_dat,'scaled:scale'))
-library(mvtnorm)
+
 # does splits
 splits_0 <- sample_2d(x=train_dat[,c(1,2)],
                       y=train_dat[,3],
