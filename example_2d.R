@@ -1,3 +1,4 @@
+rm(list = ls())
 # example in 2 D
 source('./main_functions/bidimensional_sorting.R')
 source('./main_functions/compute_qpis.R')
@@ -32,6 +33,7 @@ y0 <- f(x)
 # name2 <- paste0('./pytorch_results/pred_input_2D_example.csv')
 # write.csv(x_pred,file = name2,row.names = F)
 
+library(mvtnorm)
 time_stab1 <- system.time(
   {
     samp1 <- sample_2d(x=x,y=y0,
@@ -42,21 +44,23 @@ time_stab1 <- system.time(
                        nu = nu0,
                        n_sim = 3000)}
 )
-
+# pointwise median
 preds_stab <- apply(samp1$y_pred[1001:3000,],median,MARGIN = 2)
 # predictions at seen locations:
 # no_preds_stab <- apply(samp1$y_no_pred[1001:3000,],median,MARGIN = 2)
 
+require(tgp)
 time_bayes_gp <- system.time({
-  preds_gp <- tgp::bgp(X = x,Z = y0,XX = x_pred,
+  preds_gp <- bgp(X = x,Z = y0,XX = x_pred,
                        corr='matern',
                        m0r1 = F,BTE = c(10000,20000,1),zcov = T)}
 )
+require(mlegp)
 time_mle_gp <- system.time({
-  ml <- mlegp::mlegp(X = x,Z = y0,nugget = 1,
+  ml <- mlegp(X = x,Z = y0,nugget = 1,
                      nugget.known = F)}
 )
-pred_ml <- mlegp::predict.gp(ml,x_pred)
+pred_ml <- predict.gp(ml,x_pred)
 
 # reads predictions from pytorch procedures
 # uses the pytorch 2D script to run the neural network
@@ -77,6 +81,7 @@ for(i in 1:100){
     mean(abs(preds_stab - y_new)))
 }
 
+library(tidyverse)
 df_errors <- as.data.frame(errors) %>% 
   rename(Matern = V1,
          mleGP = V2,

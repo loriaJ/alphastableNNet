@@ -1,4 +1,4 @@
-
+rm(list= ls())
 name0 <- paste0('splits_valid_tubes.RData')
 load(file = name0)
 # optimal hyperparameters:
@@ -7,6 +7,8 @@ nu0 <- 1
 # locations, standardized are the first two columns of 
 # train dat and valid set, observations (standardized)
 # are in the third column of the respective objects
+
+library(mvtnorm)
 samps <- sample_2d(x=train_dat[,c(1,2)], 
                    y=train_dat[,3],
                    xstar = valid_set[,c(1,2)],

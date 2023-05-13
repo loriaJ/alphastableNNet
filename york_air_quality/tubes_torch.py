@@ -71,4 +71,4 @@ pred_std = np.std(preds,0)
 preds_fins = np.asarray([x_new.transpose()[0],x_new.transpose()[1], 
             pred_mean, 
             pred_std]).transpose()
-np.savetxt(dir0 + output_names, preds_fins, delimiter=",")
+np.savetxt(dir0 + 'prediction' + output_names, preds_fins, delimiter=",")
